@@ -2,8 +2,13 @@ import React from "react";
 
 function token(props) {
   return (
-    <div className={`color-${props.color}`}>
-      <img src={`http://localhost:3000/Assets/images/${props.name}`}></img>
+    <div
+      className={`token__circle ${props.item.color}`}
+      onClick={props.onChildClick}
+    >
+      <div className="token__bg">
+        <img src={`http://localhost:3000/${props.item.img}`} alt=""></img>
+      </div>
     </div>
   );
 }
