@@ -7,7 +7,7 @@ function token(props) {
       onClick={props.onChildClick}
     >
       <div className="token__bg">
-        <img src={`http://localhost:3000/${props.item.img}`} alt=""></img>
+        <img src={`./${props.item.img}`} alt=""></img>
       </div>
     </div>
   );
