@@ -48,7 +48,7 @@ main {
 }
 /* Game */
 .gamepath {
-  background-image: url(https://mamfre-mtz.github.io/RPSGame/bg-triangle.svg);
+  background-image: url("https://mamfre-mtz.github.io/RPSGame/bg-triangle.svg");
   background-position: center;
   background-size: auto;
   background-repeat: no-repeat;
@@ -174,24 +174,21 @@ main {
   background-color: transparent;
   border: 3px solid hsl(229, 25%, 31%);
   border-radius: 0.75rem;
-  bottom: 3rem;
   cursor: pointer;
   display: flex;
   font-size: 2rem;
   justify-content: center;
   letter-spacing: 0.2rem;
-  left: 50%;
+  margin: 3rem auto;
   padding: 0.8rem 0;
-  position: absolute;
-  transform: translate(-50%, 0);
+  position: initial;
   width: 12rem;
 }
 @media (min-width: 767px) {
   .btn--rules {
     bottom: 2rem;
     font-size: 1.5rem;
-    left: initial;
-    transform: none;
+    position: absolute;
     right: 5rem;
   }
 }
@@ -241,6 +238,12 @@ main {
 }
 .rules__container {
   display: inline-block;
+  width: 100%;
+}
+@media (min-width: 767px) {
+  .rules__container {
+    width: auto;
+  }
 }
 .rules__container > input:checked + .rules__popup {
   opacity: 1;
