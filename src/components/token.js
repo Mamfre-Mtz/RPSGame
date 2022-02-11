@@ -3,7 +3,7 @@ import React from "react";
 function token(props) {
   return (
     <div
-      className={`token__circle ${props.item.color}`}
+      className={`token__circle ${props.item.color} ${props.picked}`}
       onClick={props.onChildClick}
     >
       <div className="token__bg">

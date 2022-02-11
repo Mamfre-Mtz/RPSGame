@@ -14,7 +14,7 @@ class mainGame extends Component {
         { name: "rock", color: "red", img: "icon-rock.svg" },
       ],
       gameOption: false,
-      score: 0,
+      result: { score: 0, layer: "DRAW" },
       playerToken: { name: "und", color: "null", img: "null" },
       computerToken: { name: "und", color: "null", img: "null" },
     };
@@ -44,19 +44,23 @@ class mainGame extends Component {
       case "rockscissors":
       case "paperrock":
       case "scissorspaper":
-        console.log("you win!!");
-        this.setState({ score: this.state.score + 1 });
+        this.setState({
+          result: { score: this.state.result.score + 1, layer: "YOU WIN" },
+        });
         break;
       case "scissorsrock":
       case "rockpaper":
       case "paperscissors":
-        console.log("you lose");
-        this.state.score > 0
-          ? this.setState({ score: this.state.score - 1 })
-          : (this.state.score = 0);
+        this.state.result.score > 0
+          ? this.setState({
+              result: { score: this.state.result.score - 1, layer: "YOU LOSE" },
+            })
+          : this.setState({ result: { score: 0, layer: "YOU LOSE" } });
         break;
       default:
-        console.log("DRAW");
+        this.setState({
+          result: { score: this.state.result.score, layer: "DRAW" },
+        });
     }
   }
 
@@ -77,28 +81,59 @@ class mainGame extends Component {
               />
             ))}
           </div>
-          );
         </main>
       );
     } else {
       return (
-        <main onLoad={() => this.props.gameScore(this.state.score)}>
-          <div>
-            <h2>I choose {this.state.playerToken.name}</h2>
-            <Tokenlist
-              item={this.state.playerToken}
-              key={this.state.playerToken.name}
-            />
-          </div>
-          <div>
-            <h2>Computer choose {this.state.computerToken.name}</h2>
-            <Tokenlist
-              item={this.state.computerToken}
-              key={this.state.computerToken.name}
-            />
+        <main onLoad={() => this.props.gameScore(this.state.result)}>
+          <div className="resultpath">
+            <div
+              className={`circle__animation ${
+                this.state.result.layer === "YOU WIN" ? "active" : ""
+              }`}
+            >
+              <div className="add">
+                <p className="primary--text picked--text">YOU PICKED</p>
+                <Tokenlist
+                  picked="token__picked"
+                  item={this.state.playerToken}
+                  key={this.state.playerToken.name}
+                />
+              </div>
+
+              <div className="circle" style={{ animationDelay: "-3s" }}></div>
+              <div className="circle" style={{ animationDelay: "-2s" }}></div>
+              <div className="circle" style={{ animationDelay: "-1s" }}></div>
+              <div className="circle" style={{ animationDelay: "0s" }}></div>
+            </div>
+
+            <div
+              className={`circle__animation ${
+                this.state.result.layer === "YOU LOSE" ? "active" : ""
+              }`}
+            >
+              <div className="add">
+                <p className="primary--text picked--text">THE HOUSE PICKED </p>
+                <Tokenlist
+                  picked="token__picked"
+                  item={this.state.computerToken}
+                  key={this.state.computerToken.name}
+                />
+              </div>
+
+              <div className="circle" style={{ animationDelay: "-3s" }}></div>
+              <div className="circle" style={{ animationDelay: "-2s" }}></div>
+              <div className="circle" style={{ animationDelay: "-1s" }}></div>
+              <div className="circle" style={{ animationDelay: "0s" }}></div>
+            </div>
           </div>
 
-          <button onClick={this.resetState}>play again</button>
+          <h2 className="primary--text result__layer">
+            {this.state.result.layer}
+          </h2>
+          <a className="btn--play" onClick={this.resetState}>
+            PLAY AGAIN
+          </a>
         </main>
       );
     }

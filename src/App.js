@@ -2,31 +2,47 @@ import React, { Component } from "react";
 import "./Assets/css/app.css";
 import Maingame from "./components/mainGame";
 import Score from "./components/score";
+import Rules from "./components/rules";
 // import Game from "./components/game";
 
 class App extends Component {
   constructor() {
     super();
-    this.updatescore = this.updatescore.bind(this);
+    this.updateScore = this.updateScore.bind(this);
+    this.rulesActive = this.rulesActive.bind(this);
     this.state = {
-      score: 0,
+      result: { score: 0, layer: "" },
+      rules: true,
     };
   }
 
-  updatescore(n) {
-    this.setState({ score: n });
+  updateScore(data) {
+    this.setState({ result: data });
+  }
+
+  rulesActive() {
+    console.log("hi");
+    this.setState({ rules: !this.state.rules }, () => {
+      console.log(this.state.rules);
+    });
+  }
+
+  closeRules() {
+    this.setState({ rules: !this.state.rules }, () => {
+      console.log(this.state.rules);
+    });
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="">
-          <Score marcador={this.state.score} />
+      <div className="app">
+        <header className="score__container">
+          <Score marcador={this.state.result.score} />
         </header>
 
-        <Maingame gameScore={this.updatescore} />
+        <Maingame gameScore={this.updateScore} />
 
-        <h4 className="primary--text">{`Rules`}</h4>
+        <Rules />
       </div>
     );
   }
