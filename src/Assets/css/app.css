@@ -36,6 +36,8 @@ img {
 main {
   display: flex;
   flex-wrap: wrap;
+  height: 62vh;
+  min-height: 390px;
   justify-content: center;
 }
 @media (min-width: 767px) {
