@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/RPSGame/static/css/main.a73ce126.css",
-    "main.js": "/RPSGame/static/js/main.580c28af.js",
+    "main.css": "/RPSGame/static/css/main.72cbd30f.css",
+    "main.js": "/RPSGame/static/js/main.63548569.js",
     "static/js/787.c39012cf.chunk.js": "/RPSGame/static/js/787.c39012cf.chunk.js",
     "index.html": "/RPSGame/index.html",
-    "main.a73ce126.css.map": "/RPSGame/static/css/main.a73ce126.css.map",
-    "main.580c28af.js.map": "/RPSGame/static/js/main.580c28af.js.map",
+    "main.72cbd30f.css.map": "/RPSGame/static/css/main.72cbd30f.css.map",
+    "main.63548569.js.map": "/RPSGame/static/js/main.63548569.js.map",
     "787.c39012cf.chunk.js.map": "/RPSGame/static/js/787.c39012cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a73ce126.css",
-    "static/js/main.580c28af.js"
+    "static/css/main.72cbd30f.css",
+    "static/js/main.63548569.js"
   ]
 }
